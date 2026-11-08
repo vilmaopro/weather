@@ -9,7 +9,7 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSearch = async (e) => {
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!city.trim()) return;
     
@@ -20,12 +20,20 @@ export default function Home() {
       const data = await fetchWeather(city);
       setWeather(data);
     } catch (err) {
-      setError(err.message);
-      setWeather(null);
+      if (err instanceof Error){
+        console.error(err.message);
+        setWeather(null);
+      }
     } finally {
       setLoading(false);
     }
   };
+interface WeatherData {
+  name: string;
+  sys: { country: string };
+  main: { temp: number };
+  weather: { description: string; icon: string }[];
+}
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-blue-50">
