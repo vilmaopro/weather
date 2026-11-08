@@ -34,7 +34,7 @@ interface WeatherData {
   main: { temp: number };
   weather: { description: string; icon: string }[];
 }
-
+const [weather, setWeather] = useState<WeatherData | null>(null);
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-blue-50">
       <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6">
@@ -58,7 +58,7 @@ interface WeatherData {
 
         {loading && <p className="text-center text-gray-500">Loading...</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
-
+        
         {weather && (
           <div className="text-center bg-blue-100 p-6 rounded-lg">
             <h2 className="text-xl font-semibold text-gray-700">{weather.name}, {weather.sys.country}</h2>
