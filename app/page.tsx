@@ -5,7 +5,7 @@ import { fetchWeather } from "@/utils/weather";
 
 export default function Home() {
   const [city, setCity] = useState("");
-  const [weather, setWeather] = useState(null);
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -29,7 +29,7 @@ export default function Home() {
     }
   };
 interface WeatherData {
-  name: string;
+    name: string;
   sys: { country: string };
   main: { temp: number };
   weather: { description: string; icon: string }[];
