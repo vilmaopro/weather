@@ -20,10 +20,7 @@ export default function Home() {
       const data = await fetchWeather(city);
       setWeather(data);
     } catch (err) {
-      if (err instanceof Error){
-        console.error(err.message);
-        setWeather(null);
-      }
+      
     } finally {
       setLoading(false);
     }
